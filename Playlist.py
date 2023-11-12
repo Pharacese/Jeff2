@@ -1,3 +1,4 @@
 import discord
 
-Kris likes weenies
+#Code to implement playlists into Jeff v2.0
+
