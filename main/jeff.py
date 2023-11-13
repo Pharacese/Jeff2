@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import yt_dlp
 
 
 client = discord.Client(command_prefix='!', intents=discord.Intents.all())
@@ -11,7 +12,6 @@ async def on_ready():
 
 
 
-import youtube_dl
 
 class Music(commands.Cog):
 
@@ -43,7 +43,7 @@ class Music(commands.Cog):
     YDL_OPTIONS = {'format': "bestaudio"}
     vc = ctx.voice_client
 
-    with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+    with yt_dlp.YoutubeDL(YDL_OPTIONS) as ydl:
       info = ydl.extract_info(url, download=False)
       url2 = info['formats'][0]['url']
       source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
